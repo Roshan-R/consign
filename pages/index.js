@@ -1,20 +1,47 @@
-import Head from "next/head";
-import Image from "next/image";
-import { useEffect, useState } from "react";
+import React from "react";
+import Navbar from "../components/Navbar";
+import { useState ,useEffect} from "react";
+//import '../styles/index.css'
+import { useNavigate } from "react";
+import Link from "next/link";
+import { Alert } from "@material-tailwind/react";
+import Image from 'next/image'
 
-export default function Home() {
+function index() {
+  const [connected, setConnected] = useState(false);
+
+  const getAccount = async () => {
+    const addressess = await window.ethereum.request({
+      method:"eth_accounts",
+    })
+    if(addressess.length > 0){
+      setConnected(true)
+    }else{
+      setConnected(false)
+    }
+  }
+  useEffect(() => {
+    getAccount()
+  }, [connected])
+  
   return (
-    <section>
-      <div className="h-screen flex flex-col items-center justify-center">
-        <p className="text-green-700 text-xxl mb-3 ml-1">CREATE WALLET</p>
-        <form action="/send-data-here" method="post">
-          <div className="grid gap-6 mb-6 md:grid-rows-2">
-          <input type="text" id="first_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Send to" required></input>
-          <input type="number" id="first_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Min. approvals" required></input>
-          </div>
-        </form>
+    <>
+      <div className=" h-screen bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-fuchsia-300 via-green-400 to-rose-700">
+        <Navbar connected={setConnected} />
+        <div className="flex justify-center align-middle">
+       
+          
+        </div>
+        <div className="flex justify-center align-bottom">
+          {connected && (
+            <button class="bg-green-500  hover:bg-blue-700 mt-60 text-white font-bold py-2 px-4 rounded">
+              <Link href="/wallet">Create an organization</Link>
+            </button>
+          )}
+        </div>
       </div>
-    </section>
+    </>
   );
 }
 
+export default index;
