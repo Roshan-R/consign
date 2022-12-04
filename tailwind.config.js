@@ -13,4 +13,9 @@ module.exports = {
     require('preline/plugin'),
     require('@tailwindcss/forms'),
   ],
+  variants:{
+    extend :{
+      display:["group-hover"],
+    }
+  }
 }
