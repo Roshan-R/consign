@@ -1,5 +1,7 @@
 import { FaWallet } from "react-icons/fa";
 import Input from "../../components/input";
+import Navbar from "../../components/Navbar";
+import Link from "next/link";
 
 export default function Home() {
 
@@ -10,7 +12,8 @@ export default function Home() {
 
   return (
     <section>
-      <div className="h-screen flex flex-col items-center justify-center">
+      <Navbar />
+      <div className="h-screen flex flex-col items-center justify-center bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-fuchsia-300 via-green-400 to-rose-700">
         <p className="text-green-700 text-xxl mb-3 ml-1">ISSUE CERTIFICATE</p>
         <form action="/send-data-here" method="post" onSubmit={handleSubmit}>
           <div className="grid gap-6 mb-6 md:grid-rows-2">
@@ -27,7 +30,7 @@ export default function Home() {
                 "/>
             </label>
             <button type="button" class="py-3 px-4 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-gray-800 text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-800 focus:ring-offset-2 transition-all text-sm dark:focus:ring-gray-900 dark:focus:ring-offset-gray-800">
-              SUBMIT</button>
+            <Link href="/multisig">SUBMIT</Link></button>
           </div>
         </form>
       </div>
