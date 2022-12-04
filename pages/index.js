@@ -26,15 +26,14 @@ function index() {
   
   return (
     <>
-      <div className=" h-screen bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-fuchsia-300 via-green-400 to-rose-700">
+      <div className=" h-screen">
         <Navbar connected={setConnected} />
         <div className="flex justify-center align-middle">
-       
           
         </div>
         <div className="flex justify-center align-bottom">
           {connected && (
-            <button class="bg-green-500  hover:bg-blue-700 mt-60 text-white font-bold py-2 px-4 rounded">
+            <button class="bg-green-500 absolute mx-[500px] mb-11 inset-x-0 bottom-0 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               <Link href="/wallet">Create an organization</Link>
             </button>
           )}
