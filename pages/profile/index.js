@@ -3,9 +3,12 @@ import Image from "next/image";
 import { Component, useEffect, useState } from "react";
 import Input from "../../components/input";
 import NftCertificate from "../../components/NftCertificate";
+import Navbar from "../../components/Navbar";
 
 export default function Home() {
   return (
+    <>
+    <Navbar></Navbar>
     <section className="bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-fuchsia-300 via-green-400 to-rose-700">
       <div className="flex flex-col justify-start -mb-20 pt-3 px-10">
           <p className="font-bold">0xc..20D</p>
@@ -23,5 +26,6 @@ export default function Home() {
         </div>
       </div>
     </section>
+    </>
   );
 }
