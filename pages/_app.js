@@ -1,3 +1,5 @@
+import '../styles/globals.css'
+
 import { WagmiConfig, createClient } from 'wagmi'
 import {
   defaultChains, // mainnet, goerli

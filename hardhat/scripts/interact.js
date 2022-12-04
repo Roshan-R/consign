@@ -1,16 +1,17 @@
 require('dotenv').config();
 
-const contract = require("../artifacts/contracts/HelloWorld.sol/HelloWorld.json");
+const contract = require("../artifacts/contracts/Certificate.sol/Certificate.json");
+// const contract = require("../artifacts/contracts/HelloWorld.sol/HelloWorld.json");
 
-// Provider
 const alchemyProvider = new ethers.providers.AlchemyProvider(network="goerli", process.env.API_KEY);
-// Signer
 const signer = new ethers.Wallet(process.env.PRIVATE_KEY, alchemyProvider);
-// Contract
-const helloWorldContract = new ethers.Contract(process.env.CONTRACT_ADDRESS, contract.abi, signer);
+const certificateContract = new ethers.Contract(process.env.CONTRACT_ADDRESS, contract.abi, signer);
+
 
 async function main() {
-  const message = await helloWorldContract.message();
-  console.log("The message is: " + message);
+  // let a = await certificateContract.message();
+  let a = await certificateContract.safeMint("0x70997970C51812dc3A010C7d01b50e0d17dc79C8", 
+          "ipfs://bafkreifwxrryrs3km3beknse2o65uaeaaanyirk4t3rttwdhzpvlr5bljy");
+  console.log(a);
 }
 main();
