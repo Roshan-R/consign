@@ -9,9 +9,10 @@ const certificateContract = new ethers.Contract(process.env.CONTRACT_ADDRESS, co
 
 
 async function main() {
-  // let a = await certificateContract.message();
-  let a = await certificateContract.safeMint("0x70997970C51812dc3A010C7d01b50e0d17dc79C8", 
-          "ipfs://bafkreifwxrryrs3km3beknse2o65uaeaaanyirk4t3rttwdhzpvlr5bljy");
+  // let a = await certificateContract.safeMint("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266", 
+  //         "ipfs://bafyreig4y5v3nw3zeias6gpb2q3hyqy4ymv4aboeljt7rezg5j4eynl7wa/metadata.json");
+
+  let a = await certificateContract.show_balance("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266");
   console.log(a);
 }
 main();

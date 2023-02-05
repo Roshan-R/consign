@@ -7,15 +7,25 @@ module.exports = {
   ],
 
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'main': '#EEEDDE',
+        'pp': '#826DFF',
+        'peachh': '#F3CEB4'
+      }
+      ,
+      fontFamily: {
+        'roboto': ['Roboto Condensed', 'sans-serif']
+      },
+    },
   },
   plugins: [
     require('preline/plugin'),
     require('@tailwindcss/forms'),
   ],
-  variants:{
-    extend :{
-      display:["group-hover"],
+  variants: {
+    extend: {
+      display: ["group-hover"],
     }
   }
 }

@@ -19,6 +19,10 @@ contract Certificate is ERC721, ERC721Enumerable, ERC721URIStorage, ERC721Burnab
         return "";
     }
 
+    function show_balance(address owner) public view returns (uint256) {
+      return balanceOf(owner);
+    }
+
     function safeMint(address to, string memory uri) public onlyOwner {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
