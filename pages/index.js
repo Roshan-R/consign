@@ -15,11 +15,10 @@ function index() {
           </button>
         </div>
         <div className="flex border-l-4 border-t-4 border-r-8 border-b-8 border-black justify-end items-center w-1/2">
-
-          <Image alt="splashimage" src="https://ethereum.org/static/bf78b49d7e23b88a7eea934225b0cf96/dd036/enterprise-eth.png" className="w-max"></Image>
+          <img alt="splashimage" src="/enterprise-eth.webp" className="w-max"></img>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 
