@@ -5,20 +5,15 @@ import contract from "../hardhat/artifacts/contracts/Certificate.sol/Certificate
 
 // alchemy
 const PRIVATE_KEY = "54dc33fc8e45608f927d1b5b1232ba5402de6c290d774e8445571f95a66aed2a"
-const API_KEY = "ylQpXr24dr0susjwMOkqe7fDkpuK4yMi"
+const API_KEY = "ylQpXr24dr0susjwMOkqe7fDkpuK4yMi" //ethindia account
 const CONTRACT_ADDRESS = "0xDB4041fB91Be45E6E6a912c75FaF3854e4D59488"
-
-
-// web3.storage
-const W3_API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweEU4YjM0ZTJBYUI4MmU2RkFFRmQ5NDk4MUQ0OUJDY0EwYzYzMTlCZUEiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NzAxMDkxNDM0MjYsIm5hbWUiOiJldGgtaW5kaWEifQ.8wp5njkmRF4Dj336uIWNZGaAbmDGhM0VX3xRXsPB7hc"
 
 // nft.storage
 const NFT_STORAGE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweEVkMTZhMmY2NjY2MmYzYzRFN2U4OEVCQmQ0REZGMzgxMzJBMDEzMmEiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY3MDAwNTIxMzE5MCwibmFtZSI6IkVUSEluZGlhIn0.fMs_udsLv1k7MnHcHp-g-TZoOr3Mt9MyythqZycco9c";
 
-class Certificate{
+class Certificate {
 
-  constructor(){
-    // this.client = new Web3Storage({token:W3_API_KEY});
+  constructor() {
     this.client = new NFTStorage({ token: NFT_STORAGE_KEY })
     this.alchemyProvider = new ethers.providers.AlchemyProvider("goerli", API_KEY);
     this.signer = new ethers.Wallet(PRIVATE_KEY, this.alchemyProvider);
@@ -30,9 +25,9 @@ class Certificate{
     console.log(image);
     let description = "Sample desc";
     let a = await this.client.store({
-        image,
-        name,
-        description,
+      image,
+      name,
+      description,
     });
     return a.url;
   }
@@ -43,7 +38,7 @@ class Certificate{
     return new File([content], path.basename(filePath), { type })
   }
 
-  async createNFT(addr, cid){
+  async createNFT(addr, cid) {
     let a = await this.certificateContract.safeMint(addr, cid)
     return a;
   }

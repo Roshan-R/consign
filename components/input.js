@@ -10,8 +10,8 @@ function Input(props) {
   {/* </div> */ }
   return (
     <>
-      <label class="block text-xl font-bold mb-1">{props.name}</label>
-      <input class="mb-5 h-9 bg-gray-300" type="text" />
+      <label className="block text-xl font-bold mb-1">{props.name}</label>
+      <input className="mb-5 h-9 bg-gray-300" type="text" />
     </>
 
   );

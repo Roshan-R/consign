@@ -6,10 +6,10 @@ function index() {
   return (
     <div className="h-screen bg-main font-roboto">
       <Navbar />
-      <div class="ml-6 mt-6 flex gap-[220px]">
-        <div class="mt-40 ml-4 flex flex-col">
-          <div class="text-7xl font-roboto font-extrabold">CONSIGN</div>
-          <div class="text-2xl font-roboto">A Decentralized Certificate Issuing Platform</div>
+      <div className="ml-6 mt-6 flex gap-[220px]">
+        <div className="mt-40 ml-4 flex flex-col">
+          <div className="text-7xl font-roboto font-extrabold">CONSIGN</div>
+          <div className="text-2xl font-roboto">A Decentralized Certificate Issuing Platform</div>
           <button className="text-xl font-bold w-max mt-5 mr-2 bg-peachh p-3 border-t-2 border-l-2 border-r-4 border-b-4 hover:border-b-8 border-black">
             Get Started
           </button>

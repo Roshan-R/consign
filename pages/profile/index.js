@@ -31,12 +31,12 @@ export default function Home() {
     <div className="bg-main">
       <Navbar></Navbar>
       <div className="flex bg-main flex-col justify-start mb-12 pt-3 px-10">
-        <div class="ml-12 mt-8">
+        <div className="ml-12 mt-8">
           <p className="text-6xl font-roboto font-bold">CERTIFICATES</p>
         </div>
       </div>
       <div className="m-8">
-        <div class="grid grid-cols-2 grid-rows-2 gap-12">
+        <div className="grid grid-cols-2 grid-rows-2 gap-12">
           {nfts.map((el, i) => <NftCertificate key={i} title={el.title} image={el.metadata.image.replace("ipfs://", "https://cloudflare-ipfs.com/ipfs/")} />)}
         </div>
       </div>
