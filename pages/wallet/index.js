@@ -17,36 +17,27 @@ import Input from "../../components/input";
 // } from "wagmi";
 
 function Wallet() {
-  const [inputFields, setInputFields] = useState([{}]);
-  const [isloading, setIsLoading] = useState(false);
 
+  const [isLoading, setIsLoading] = useState(false);
   const [maxInput, setMaxInput] = useState(1);
   const [minInput, setMinInput] = useState(1);
+  const [adrs, setAdrs] = useState([]);
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    for (const x of e.target) {
+      if (x.value) {
+        adrs.push(x.value)
+      }
+    }
+  }
 
   // const [final, SetFInal] = useState(true);
   // const [messageMax, setMessageMax] = useState("");
 
-  const addFields = () => {
-    console.log(maxInput);
-    setMaxInput(maxInput + 1);
-    if (maxInput < 10) {
-      let newField = {};
-      setInputFields([...inputFields, newField]);
-    } else {
-      SetFInal(false);
-    }
-  };
-  const [minNum, setMinNum] = useState(0);
-  const handleChange = (event) => {
-    setMinNum(event.target.value);
-  };
 
   //   const [addresses, setAddresses] = useState([address]);
   //   const [debounceAddresses] = useDebounce(addresses, 500)
-  //   const handleAddresses = (index, event) => {
-  //     addresses[index] = event.target.value
-  //     setAddresses([address, ...addresses.filter((el) => el)])
-  //   }
 
   //   // const { config } = usePrepareContractWrite({
   //   //   address: '0xff71e53282684913a073850a0A09020b3F2c0286',
@@ -69,7 +60,7 @@ function Wallet() {
   //   const [debounceMinNum] = useDebounce(minNum, 500)
 
   return (
-    <div className="h-scren bg-main overflow-auto">
+    <div className="h-screen bg-main overflow-auto font-roboto">
       <Navbar />
       <div className="">
         <div>
@@ -89,26 +80,25 @@ function Wallet() {
               name="Minimum number of officials to approve the transaction"
             />
             <br></br>
-            <form className="">
+            <form onSubmit={handleFormSubmit} className="">
               <div className="mb-4">
-                <label
-                  htmlFor="username"
-                  className="block text-xl font-bold mb-1"
-                >
-                  Enter the wallet address
-                </label>
+                {maxInput ?
+                  <label
+                    htmlFor="username"
+                    className="block text-xl text-gray-700 font-bold mb-2"
+                  >
+                    Enter the wallet address
+                  </label>
+                  : <></>}
 
-                <div class="grid grid-cols-4 gap-4 overflow-auto">
+                <div className="grid grid-cols-6 overflow-auto mr-12">
                   {Array.apply(null, { length: maxInput }).map((e, i) => (
                     <div key={i}>
                       <input
                         className="mb-5 h-9 bg-gray-300"
                         id="username"
                         type="text"
-                        placeholder="Your wallet address here"
-                        onChange={(event) => {
-                          handleAddresses(i, event);
-                        }}
+                        placeholder={`${i + 1}. Your wallet address here`}
                       />
                     </div>
                   ))}
@@ -120,7 +110,7 @@ function Wallet() {
                   type="submit"
                   className="mt-6 text-xl font-bold mr-14 bg-peachh p-3 border-t-2 border-l-2 border-r-4 border-b-4 hover:border-b-8 border-black"
                 >
-                  {isloading ? (
+                  {isLoading ? (
                     <>
                       <span
                         className="animate-spin inline-block w-4 h-4 mr-2 border-[3px] border-current border-t-transparent text-black rounded-full"

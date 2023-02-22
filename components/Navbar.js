@@ -27,6 +27,7 @@ function Navbar() {
           <div className="mt-5 flex flex-row items-center gap-7 sm:mt-0 sm:justify-end sm:pl-5">
             <Link className="font-medium font-roboto text-xl text-black hover:underline" href="/issue">Issue</Link>
             <Link className="font-medium font-roboto text-xl text-black hover:underline" href="/profile">Profile</Link>
+            <Link className="font-medium font-roboto text-xl text-black hover:underline" href="/wallet">Wallet</Link>
             <button onClick={handleClick} className="text-xl font-roboto font-bold mr-14 bg-peachh p-3 border-t-2 border-l-2 border-r-4 border-b-4 hover:border-b-8 border-black">
               {addr
                 ? `Connected: ${addr.slice(0, 7) + '..'}`
