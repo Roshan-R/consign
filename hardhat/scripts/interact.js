@@ -3,7 +3,7 @@ require('dotenv').config();
 const contract = require("../artifacts/contracts/Certificate.sol/Certificate.json");
 // const contract = require("../artifacts/contracts/HelloWorld.sol/HelloWorld.json");
 
-const alchemyProvider = new ethers.providers.AlchemyProvider(network="goerli", process.env.API_KEY);
+const alchemyProvider = new ethers.providers.AlchemyProvider(network = "maticmum", process.env.API_KEY);
 const signer = new ethers.Wallet(process.env.PRIVATE_KEY, alchemyProvider);
 const certificateContract = new ethers.Contract(process.env.CONTRACT_ADDRESS, contract.abi, signer);
 

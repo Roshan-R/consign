@@ -7,37 +7,59 @@ import { useAccount } from "wagmi";
 export default function Home() {
   const { address, isConnected } = useAccount()
   const [nfts, setNfts] = useState([])
+  const [len, setLen] = useState()
+  const [loading, setLoading] = useState(false)
+
+  async function parseJson(json) {
+
+    for (const e of json.ownedNfts) {
+      const response = await fetch(e.tokenUri.gateway)
+      const obj = await response.json()
+      console.log(obj)
+      setNfts(nfts => [...nfts, obj])
+    }
+
+  }
+  useEffect(() => {
+    if (nfts.length == len) {
+      setLoading(true)
+    }
+  }, [nfts])
 
   useEffect(() => {
-    const baseURL = "https://eth-goerli.g.alchemy.com/v2/ylQpXr24dr0susjwMOkqe7fDkpuK4yMi";
-    // const address = "0x6C9176A701601E21F7199BAf142c057466b4c933";
-    const url = `${baseURL}/getNFTs/?owner=${address}`;
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/getNFTs/?owner=${address}`;
 
     let requestOptions = {
       method: 'get',
       redirect: 'follow'
     };
 
-    (async () => {
-      const response = await fetch(url, requestOptions)
-      const body = await response.json()
-      console.log(body)
-      setNfts(body.ownedNfts)
-    }
-    )()
+    let ignore = false;
+    fetch(url, requestOptions)
+      .then(response => response.json())
+      .then(json => {
+        if (!ignore) {
+          setLen(json.ownedNfts.length)
+          parseJson(json)
+        }
+      });
+    return () => {
+      ignore = true;
+    };
+
 
   }, [])
   return (
-    <div className="bg-main">
+    <div className="h-screen bg-main">
       <Navbar></Navbar>
       <div className="flex bg-main flex-col justify-start mb-12 pt-3 px-10">
         <div className="ml-12 mt-8">
           <p className="text-6xl font-roboto font-bold">CERTIFICATES</p>
         </div>
       </div>
-      <div className="m-8">
-        <div className="grid grid-cols-2 grid-rows-2 gap-12">
-          {nfts.map((el, i) => <NftCertificate key={i} title={el.title} image={el.metadata.image.replace("ipfs://", "https://cloudflare-ipfs.com/ipfs/")} />)}
+      <div className="ml-24 mr-14">
+        <div className="grid grid-cols-3 gap-6">
+          {loading ? nfts.map((el, i) => <NftCertificate key={i} title={el.name} image={el.image.replace("ipfs://", "https://cloudflare-ipfs.com/ipfs/")} />) : <>Loading</>}
         </div>
       </div>
     </div >
