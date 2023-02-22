@@ -11,11 +11,12 @@ module.exports = {
       colors: {
         'main': '#EEEDDE',
         'pp': '#826DFF',
-        'peachh': '#F3CEB4'
+        'peachh': '#F3CEB4',
+        'purplee': '#C2B5FA'
       }
       ,
       fontFamily: {
-        'roboto': ['Roboto Condensed', 'sans-serif']
+        roboto: ['Roboto Condensed', 'sans-serif']
       },
     },
   },
