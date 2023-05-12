@@ -30,6 +30,7 @@ function Wallet() {
         adrs.push(x.value)
       }
     }
+    console.log(adrs)
   }
 
   // const [final, SetFInal] = useState(true);

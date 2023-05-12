@@ -665,6 +665,41 @@
       "artifacts": [
         "HelloWorld"
       ]
+    },
+    "/home/rosh/dev/blockchain/consign/hardhat/contracts/MultiSigWallet.sol": {
+      "lastModificationDate": 1677089354451,
+      "contentHash": "240441601379fdcec7fe38436f96a6df",
+      "sourceName": "contracts/MultiSigWallet.sol",
+      "solcConfig": {
+        "version": "0.8.17",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.17"
+      ],
+      "artifacts": [
+        "MultiSigWallet"
+      ]
     }
   }
 }

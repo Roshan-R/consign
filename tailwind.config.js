@@ -12,7 +12,9 @@ module.exports = {
         'main': '#EEEDDE',
         'pp': '#826DFF',
         'peachh': '#F3CEB4',
-        'purplee': '#C2B5FA'
+        'purplee': '#C2B5FA',
+        'greenn': '#57EC66',
+        'redd': '#EC5757',
       }
       ,
       fontFamily: {

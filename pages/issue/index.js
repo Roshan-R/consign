@@ -54,7 +54,7 @@ export default function Home() {
             </div>
             <Input name="Certificate Name" placeholder="Name"></Input>
             <Input name="Reciever Address" placeholder="0x0000a0123123"><FaWallet /></Input>
-            <label className="block text-xl font-bold font-roboto">Image file
+            <label className="block text-gray-700 text-xl font-bold font-roboto">Image file
               <span className="sr-only">Choose profile photo</span>
               <input type="file" onChange={handleFileChange} accept="image/png, image/jpeg"
                 className="block w-full text-sm text-gray-500
@@ -70,7 +70,7 @@ export default function Home() {
           </div>
         </form>
         {file ?
-          <div className=" mx-32 my-16 w-1/3 h-96">
+          <div className=" mx-32 my-16 w-2/5 ">
             Certificate Preview
             <NftCertificate image={file}></NftCertificate>
             {/* <img alt="certificate_preview" src={file} className="border-black border-4 object-scale-down w-full h-full"></img> */}
